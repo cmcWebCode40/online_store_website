@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  background-color: #d7e1e9; }
+
+.section-a {
+  position: relative; }
+
+.carousel-wrapper .carousel {
+  transform-style: preserve-3d; }
+  .carousel-wrapper .carousel__photo {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    padding: 1rem 4rem;
+    z-index: 100;
+    transition: transform .5s, opacity .5s, z-index .5s; }
+    .carousel-wrapper .carousel__photo.initial, .carousel-wrapper .carousel__photo.active {
+      opacity: 1;
+      position: relative;
+      z-index: 900; }
+    .carousel-wrapper .carousel__photo.prev,
+    .carousel-wrapper .carousel__photo .next {
+      z-index: 800; }
+    .carousel-wrapper .carousel__photo.prev {
+      transform: translateX(-100%); }

@@ -1,0 +1,41 @@
+ @import './mixins';
+ @import './utils';
+ @import './variables';
+ //**********carousel Images********//
+ .section-a {
+     position: relative;
+ }
+ 
+ .carousel-wrapper {
+     .carousel {
+         transform-style: preserve-3d;
+         &__photo {
+             opacity: 0;
+             position: absolute;
+             top: 0;
+             width: 100%;
+             margin: auto;
+             padding: 1rem 4rem;
+             z-index: 100;
+             transition: transform .5s, opacity .5s, z-index .5s;
+             &.initial {
+                 opacity: 1;
+                 position: relative;
+                 z-index: 900;
+             }
+             &.active {
+                 @extend .initial;
+             }
+             &.prev,
+             .next {
+                 z-index: 800;
+             }
+             &.prev {
+                 transform: translateX(-100%);
+             }
+             &.next {
+                 transform: translateX(100%);
+             }
+         }
+     }
+ }

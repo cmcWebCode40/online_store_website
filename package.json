@@ -1,0 +1,26 @@
+{
+    "name": "online_store_website",
+    "version": "1.0.0",
+    "description": "An online shoping platform",
+    "main": "index.js",
+    "scripts": {
+        "start": "node-sass scss/main.scss public/css/main.css -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cmcWebCode40/online_store_website.git"
+    },
+    "keywords": [
+        "shoping",
+        "website"
+    ],
+    "author": "cmcWebCode",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/cmcWebCode40/online_store_website/issues"
+    },
+    "homepage": "https://github.com/cmcWebCode40/online_store_website#readme",
+    "devDependencies": {
+        "node-sass": "^4.13.1"
+    }
+}
