@@ -1,6 +1,6 @@
 // //**********Carousel Effects for Landing page**********/
 
-const init = () => {
+(() => {
     // document.querySelector(".carousel__button-next").addEventListener('click', (e) => {
     //     let num = 0;
     //     console.log(num++);
@@ -55,9 +55,9 @@ const init = () => {
         
     }
     
-}
+})()
 
-init()
+// init()
 
 console.log("hello");
 
