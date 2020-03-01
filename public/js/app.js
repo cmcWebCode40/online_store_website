@@ -21,7 +21,39 @@
     }
 
     const disableCarouselDisplay=()=>{
-        movinf
+        moving = true;
+
+        setTimeout(() => {
+            moving = false;
+        }, 500);
+    }
+
+    const carouselDirection =(slide)=> {
+        if (!moving) {
+            disableCarouselDisplay();
+            let newPrev =  slide -1,
+            newNext = slide +1,
+            oldPrev = slide -2,
+            oldNext = slide +2;
+            
+            if ((totalItems -1)> 3) {
+               if (newPrev <=0) {
+                   oldPrev = (totalItems -1);
+               } else if(newNext >= (totalItems-1)) {
+                   oldNext =0;
+               } 
+
+               if (slide === 0) {
+                   newPrev = (totalItems -1);
+                   oldPrev = (totalItems -2);
+                   oldNext = (slide +1);
+               } else if(slide === (totalItems-1)) {
+                   newPrev = (slide -1);
+                   newNext =0;
+                   oldNext =1;
+               }
+            } 
+        }
     }
 
     const moveToNext=()=> {
