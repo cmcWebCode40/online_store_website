@@ -1,0 +1,5 @@
+{
+    "prettier.vueIndentScriptAndStyle": true,
+    "emmet.triggerExpansionOnTab": true,
+    "terminal.integrated.fastScrollSensitivity": 4
+}
