@@ -57,9 +57,6 @@ body {
       .container-fluid header nav ul li {
         margin: 0 .3rem 0 .9rem; }
 
-.section-a {
-  background-color: red; }
-
 .carousel {
   height: 55vh;
   background-color: rgba(1, 20, 47, 0);
@@ -71,6 +68,7 @@ body {
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      height: 50vh;
       width: 100%; }
       .carousel .carousel-inner .carousel-item .image-slide {
         display: none; }
