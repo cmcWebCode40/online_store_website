@@ -56,19 +56,3 @@ body {
       color: #922d25; }
       .container-fluid header nav ul li {
         margin: 0 .3rem 0 .9rem; }
-
-.carousel {
-  height: 55vh;
-  background-color: rgba(1, 20, 47, 0);
-  width: 100%; }
-  .carousel .carousel-inner {
-    height: 100%; }
-    .carousel .carousel-inner .carousel-item {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      height: 50vh;
-      width: 100%; }
-      .carousel .carousel-inner .carousel-item .image-slide {
-        display: none; }
