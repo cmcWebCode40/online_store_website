@@ -1,32 +1,35 @@
 {
-    "name": "online_store_website",
-    "version": "1.0.0",
-    "description": "An online shoping platform",
-    "main": "index.js",
-    "scripts": {
-        "start": "node-sass scss/main.scss public/css/main.css -w"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/cmcWebCode40/online_store_website.git"
-    },
-    "keywords": [
-        "shoping",
-        "website"
+  "name": "online-shop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "node-sass": "^4.14.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "author": "cmcWebCode",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/cmcWebCode40/online_store_website/issues"
-    },
-    "homepage": "https://github.com/cmcWebCode40/online_store_website#readme",
-    "devDependencies": {
-        "node-sass": "^4.13.1"
-    },
-    "dependencies": {
-        "bootstrap": "^4.4.1",
-        "fontawesome": "^5.6.3",
-        "jquery": "^1.9.1",
-        "popper.js": "^1.16.1"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

@@ -1,7 +1,0 @@
-@mixin formatImage($width, $height) {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: $height;
-    width: $width;
-}
