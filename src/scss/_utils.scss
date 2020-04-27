@@ -1,0 +1,63 @@
+@import './variables';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  a{
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  background-color: $bg-color;
+}
+
+//*** Spacing Config****//
+
+$spacesize: (1, 2, 3, 4, 5);
+@each $space in $spacesize {
+  //**Margins
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+  .mx-#{$space} {
+    margin: 0 #{$space}rem;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}rem;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}rem;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+
+  //**Paddings
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+  .px-#{$space} {
+    padding: 0 #{$space}rem;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}rem;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}rem;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+}
