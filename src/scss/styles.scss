@@ -3,6 +3,7 @@
 @import "./utils";
 @import "./variables";
 
+//header section
 .header {
   display: flex;
   border-bottom: 1px solid #ccc;
@@ -13,17 +14,205 @@
     display: flex;
     li {
       margin: 0 1rem;
-      a{
+      a {
         color: $text-color;
       }
     }
   }
 }
 
+//landing page section
 .landing-page {
   &-content {
     h1 {
       font-size: $sm-font-size;
     }
+  }
+}
+
+//About Section
+.about {
+  background: linear-gradient(to right, rgba($primary, 0.4), rgba($primary, 0.7), rgba($primary, 0.3)),
+    url("../images/hospital.jpg") center/cover no-repeat;
+  @include justifyCenter;
+  &-card {
+    position: relative;
+    background: $light;
+    width: 80%;
+    h2 {
+      color: $primary;
+    }
+    img {
+      @include positionItemRight(absolute, 6rem, -2rem);
+    }
+  }
+}
+
+//Product section
+.product {
+  position: relative;
+  background: $white;
+  text-align: center;
+  width: 75%;
+  margin: 2rem auto;
+  box-shadow: 1px 1px 2px 3px #ddd, 4px 3px 0 0 #ddd;
+  &-like {
+    @include positionItemRight(absolute, 0, 0);
+    padding: 0.7rem 1.2rem 0 0;
+    .liked {
+      background-color: red;
+    }
+  }
+  &-image {
+    padding: 2.7rem 0 0 0;
+    img {
+      height: 7rem;
+      width: 9rem;
+    }
+    p {
+      &:nth-child(3) {
+        color: $primary;
+        font-weight: 600;
+      }
+    }
+  }
+  &-cart {
+    background: $primary;
+    color: $white;
+  }
+}
+
+.bags,
+.shoes {
+  &-title {
+    @include justifyCenter;
+    span {
+      background: $primary;
+      height: 0.05rem;
+      width: 3rem;
+      display: block;
+      margin: 0 0.6rem;
+    }
+    h2 {
+      font-weight: lighter;
+    }
+  }
+}
+
+//Cart Section
+
+.cart {
+  margin: 1rem;
+  h3 {
+    text-align: left;
+    font-weight: lighter;
+  }
+  .cart-box {
+    box-shadow: 1px 2px 3px 4px #ddd;
+    &-grid {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr;
+      &-text {
+        p {
+          font-size: 1.1rem;
+        }
+        span {
+          color: $primary;
+          font-weight: bold;
+        }
+      }
+      img {
+        height: 5rem;
+        width: 7rem;
+      }
+    }
+    &-bottom {
+      border-top: 1px solid #ccc;
+      padding: 0.1rem 0;
+      span {
+        margin: 0 3rem;
+      }
+    }
+  }
+  .total {
+    text-align: center;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+
+//advert section
+.advert {
+  text-align: center;
+  &-links {
+    h5 {
+      font-size: 1.8rem;
+      color: $primary;
+    }
+    div > span {
+      margin: 1.3rem 0.8rem;
+    }
+  }
+}
+
+//footer section
+.footer {
+  background: $primary;
+  text-align: center;
+  &-subscribe {
+    form {
+      height: 2.5rem;
+      input,
+      button {
+        height: 100%;
+        padding: 0.5rem;
+      }
+      button {
+        background-color: $light;
+        outline: none;
+        border: none;
+        color: $primary;
+        cursor: pointer;
+        &:hover {
+          background: lighten($primary, 100);
+          font-weight: 500;
+        }
+      }
+      input {
+        padding: 0.4rem 1rem;
+        background-color: transparent;
+        border-right: none;
+        border: 1px solid $light;
+        outline: $light;
+        &::placeholder {
+          color: $white;
+          font-style: italic;
+        }
+        &:focus {
+          border: 2px solid $light;
+        }
+      }
+    }
+  }
+  &-nav {
+    ul {
+      @include justifyCenter;
+      li {
+        margin: 0 0.5rem;
+        a {
+          color: $white;
+          &:hover {
+            color: $primary;
+            background: $light;
+            padding: 0.4rem;
+          }
+        }
+      }
+    }
+  }
+  cite {
+    color: $white;
   }
 }
