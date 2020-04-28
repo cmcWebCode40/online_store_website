@@ -1,12 +1,15 @@
 import React from 'react';
+import ContextProvider from './components/context/ContextApi';
 import Layouts from './layouts/Layouts';
 import './scss/styles.scss';
 
 const App = () => {
   return (
-    <div className="app">
-      <Layouts/>
-    </div>
+    <ContextProvider>
+      <div className="app">
+        <Layouts />
+      </div>
+    </ContextProvider>
   );
 }
 

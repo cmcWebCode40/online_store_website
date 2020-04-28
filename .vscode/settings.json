@@ -1,0 +1,12 @@
+{
+  "beautify.config": "string|Object.<string,string|number|boolean>",
+  "beautify.language": {
+    "css": {},
+    "js": {},
+  },
+  "prettier.vueIndentScriptAndStyle": true,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 100
+}

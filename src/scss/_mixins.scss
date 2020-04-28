@@ -1,0 +1,17 @@
+@mixin justifyCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin positionItemRight($position, $top,$right) {
+  position: $position;
+  top: $top;
+  right: $right;
+}
+
+@mixin positionItemLeft($position, $top,$left) {
+  position: $position;
+  top: $top;
+  left: $left;
+}

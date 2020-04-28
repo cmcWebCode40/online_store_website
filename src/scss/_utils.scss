@@ -1,13 +1,17 @@
-@import './variables';
+@import "./variables";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  a{
+  a {
     text-decoration: none;
     cursor: pointer;
   }
+}
+
+html {
+  overflow: visible;
 }
 
 body {
@@ -15,6 +19,9 @@ body {
   line-height: 1.7;
   font-size: 1rem;
   background-color: $bg-color;
+}
+.text-primary-color {
+  color: $primary;
 }
 
 //*** Spacing Config****//
@@ -40,6 +47,9 @@ $spacesize: (1, 2, 3, 4, 5);
   .mb-#{$space} {
     margin-bottom: #{$space}rem;
   }
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
 
   //**Paddings
   .py-#{$space} {
@@ -59,5 +69,8 @@ $spacesize: (1, 2, 3, 4, 5);
   }
   .pb-#{$space} {
     padding-bottom: #{$space}rem;
+  }
+  .p-#{$space} {
+    padding: #{$space}rem;
   }
 }
