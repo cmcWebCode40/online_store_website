@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NavBar = () => {
   return (
@@ -8,6 +9,12 @@ const NavBar = () => {
         {/* <li> <a href="wecsjkcskjdc.com">ABOUT</a></li> */}
         {/* <li> <a href="wecsjkcskjdc.com">SUBSCRIBE</a></li>
         <li> <a href="wecsjkcskjdc.com">CART</a></li> */}
+        <li> <a href="wecsjkcskjdc.com"> <FontAwesomeIcon
+          icon="shopping-cart"
+          size="2x"
+          style={{ marginRight: "1rem" }}
+          color="brown"
+        /></a></li>
       </ul>
     </div>
   )

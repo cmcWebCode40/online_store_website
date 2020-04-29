@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { context } from '../../context/ContextApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import slideImage from '../../../images/slide3.jpg';
 
 const BagList = () => {
@@ -12,7 +13,14 @@ const BagList = () => {
   return (
     <div className="product">
       <div className="product-like">
-        <span onClick={handleLikeBtn} className={isLiked ? 'liked' : ""} >like</span>
+        <span onClick={handleLikeBtn} >
+          <FontAwesomeIcon
+            icon="heart"
+            size="1x"
+            style={{ marginRight: "1rem" }}
+            color={isLiked ? "red" : ""}
+          />
+        </span>
       </div>
       <div className="product-image ">
         <img src={slideImage} alt="" />
@@ -20,7 +28,14 @@ const BagList = () => {
         <p>$200.00</p>
       </div>
       <div className="product-cart p-1" onClick={() => { addToCart('image', 'bag-image', '$200.00') }}>
-        <p>Add to cart</p>
+        <p>
+          <FontAwesomeIcon
+            icon="shopping-cart"
+            size="1x"
+            style={{ marginRight: "1rem" }}
+            color="#fff"
+          />Add to cart
+        </p>
       </div>
     </div>
   )
