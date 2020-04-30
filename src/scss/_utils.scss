@@ -74,3 +74,24 @@ $spacesize: (1, 2, 3, 4, 5);
     padding: #{$space}rem;
   }
 }
+
+.btn {
+  color: $white;
+  background-color: $primary;
+  padding: 1rem 3rem;
+  box-shadow: $box-shadow;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &-light {
+    background-color: #000;
+    color: $white;
+  }
+  &:hover {
+    transform: translateY(-4px);
+    // color: #000;
+  }
+  &:active {
+    transform: translateY(-2px);
+  }
+}
