@@ -4,7 +4,7 @@ import Shoes from './shoes/Shoes';
 
 const Products = () => {
   return (
-    <div>
+    <div id="products">
       <Bags />
       <Shoes />
     </div>

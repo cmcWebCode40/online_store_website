@@ -6,7 +6,7 @@ import Advert from '../components/advert/Advert';
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       <LandingPage />
       <Products />
       <About />

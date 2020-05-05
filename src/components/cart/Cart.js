@@ -1,63 +1,114 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { context } from '../context/ContextApi';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Notifications from '../notifications/Notifications';
 import imageCart from '../../images/slide3.jpg';
+import CartImage from '../../images/commerce-and-shopping.svg';
 
+const NoCartAvailabe = () => (
+  <div className="no-cart">
+    <div className="no-cart-image mb-2">
+      <img height="150" width="150" src={CartImage} alt="no cart available" />
+    </div>
+    <Link to="/" className="btn btn-light">
+      Start Shopping
+    </Link>
+  </div>
+)
 const Cart = () => {
-  const [setCart] = useContext(context);
-  const [num, setNum] = useState(0)
+  const [notify, setNotify] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
   const getCart = JSON.parse(localStorage.getItem('cart'));
-  const [cartList, setCartList] = useState([{ id: 0.11811108009532911, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.39494435775995185, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.9702821389141814, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.6918125359326628, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.12932007405824986, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.17941781782364763, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.9848309685051662, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.6139105916279615, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.7421908225894105, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.8264201808367309, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.6036626059101684, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.7390769665032997, title: "image", image: "bag-image", price: "$200.00", count: 0 },
-  { id: 0.4972256836330846, title: "image", price: "$200.00", count: 0 }]);
-  // let num  = 0;
-  const increasePerItemQty = (id) => {
-    const result = cartList.map((cart) =>
-      cart.id === id ? { count: cart.count + 1 } : null
-    )
-    return console.log(result);
-    //   setNum(c => (c + 1))
-    //  return console.log(num);
-    // localStorage.setItem('cart', JSOFN.stringify(cartList));
-  }
-  // console.log(cartList);
 
+  const increasePerItemQty = (id) => {
+    const data = getCart.map(cart => (
+      (cart.id === id) ? { ...cart, count: cart.count + 1, price: Number(cart.price * (cart.count)) } : cart
+    ))
+    localStorage.setItem('cart', JSON.stringify(data));
+    setNotify(!notify)
+  };
+  const decreasePerItemQty = (id) => {
+    const data = getCart.map(cart => (
+      (cart.id === id && cart.count >= 1) ? { ...cart, count: cart.count - 1 } : cart
+    ))
+    localStorage.setItem('cart', JSON.stringify(data));
+    setNotify(!notify)
+  };
+  const deleteFromCart = (id) => {
+    const data = getCart.filter(cart =>
+      cart.id !== id ? cart : null
+    )
+    localStorage.setItem('cart', JSON.stringify(data));
+
+    setTimeout(() => {
+      setNotify(!notify)
+    }, 1000);
+    setNotify(false)
+  }
 
 
   useEffect(() => {
-
-  }, [cartList])
+    const getTotal = localStorage.getItem('cart');
+    if (getTotal) {
+      const data = getCart.reduce((a, b) => a + Number(b.price), 0)
+      setTotalPrice(data);
+    }
+  }, [getCart])
 
   return (
     <div className="cart">
-      <h3 className="mx-1 ">MY CAART ({cartList ? cartList.length : 0} ITEMS)</h3>
-      {num}      {(cartList) ? cartList.map(cart => (
-        <div className="cart-box mx-1 py-1 my-2" key={cart.id}>
-          <div className="cart-box-grid">
-            <img src={imageCart} alt={cart.title} />
-            <div className="cart-box-grid-text">
-              <p>{cart.title}</p>
-              <span>{cart.price}</span>
+      <h3 className="mx-1 ">MY CART ({getCart ? getCart.length : 0} ITEMS)</h3>
+      {notify && <Notifications message='Item removed from cart' classStyle='new' />}
+      <div className="cart-grid">
+        {(getCart.length) ? getCart.map(cart => (
+          <div className="cart-box m-2 py-1 " key={cart.id}>
+            <div className="cart-box-grid">
+              <img src={imageCart} alt={cart.title} />
+              <div className="cart-box-grid-text">
+                <p>{cart.title}</p>
+                <span>{cart.price}</span>
+              </div>
+            </div>
+            <div className="cart-box-bottom">
+              <span onClick={() => deleteFromCart(cart.id)}>
+                <FontAwesomeIcon
+                  icon="trash"
+                  size="1x"
+                  style={{ marginRight: "1rem" }}
+                  color="#ee6a65"
+                />
+             Remove
+            </span>
+              <span onClick={() => decreasePerItemQty(cart.id)}>  <FontAwesomeIcon
+                icon="minus-circle"
+                size="1x"
+                style={{ marginRight: "1rem" }}
+                color="#ee6a65"
+              /></span>
+              <span>{cart.count}</span>
+              <span onClick={() => increasePerItemQty(cart.id)}>  <FontAwesomeIcon
+                icon="plus-circle"
+                size="1x"
+                style={{ marginRight: "1rem" }}
+                color="#ee6a65"
+              /></span>
             </div>
           </div>
-          <div className="cart-box-bottom">
-            <span>delete</span>
-            <span >-</span>
-            <span>{cart.count}</span>
-            <span onClick={() => increasePerItemQty(cart.id)}>+</span>
-          </div>
-        </div>
-      )) : <p>NO CART</p>}
-      <p className="total">Total <span>:bla bla bla </span> <br /> <a href="www.call.com">Call To Order</a></p>
+
+        )) : <NoCartAvailabe />}
+      </div>
+      <p className="total mb-1">Total <span>{totalPrice ? totalPrice : 0} </span></p>
+      <br />
+      <div className="mb-3 cart-btn">
+        <a href="www.call.com" className="btn">
+          <FontAwesomeIcon
+            icon="phone-alt"
+            size="1x"
+            style={{ marginRight: '1rem ' }}
+            color="#fff"
+          />
+      Call To Order</a>
+      </div>
     </div>
   )
 };
