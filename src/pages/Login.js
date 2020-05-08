@@ -1,11 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import Notification from '../components/notifications/Notifications';
 import loginImage from '../images/login.svg';
 
 const Login = () => {
+  const [userData, setUserData]=useState({email:'', password:''});
+  const [message, setMessage]=useState(false);
+
+  const handleLogin = async(e)=>{
+    e.preventDefault();
+    setMessage(!message)
+  };
+
   return (
-    <div className="form">
+    <div className="form" onSubmit={handleLogin}>
       <div className="form-wrapper">
         <div className="form-wrapper-image">
           <img src={loginImage} alt="login portal " height="350" />
@@ -13,6 +22,7 @@ const Login = () => {
         <div className="form-wrapper-field">
           <h3>ADMIN LOGIN</h3>
           <form>
+            {message && <Notification classStyle="notify-danger" message="action cannot be peformed"/>}
             <div>
               <label htmlFor="email">
                 <FontAwesomeIcon
@@ -22,7 +32,7 @@ const Login = () => {
                   style={{ marginRight: '.5rem' }}
                 />
                 Email
-                <input name="email" type="text" required placeholder="enter email" />
+                <input name="email" type="email"  placeholder="enter email" onChange={(e)=>setUserData({...userData, email: e.target.value})} required  />
               </label>
             </div>
             <div>
@@ -34,7 +44,7 @@ const Login = () => {
                   style={{ marginRight: '.5rem' }}
                 />
                 Password
-                <input name="password" type="text" required placeholder="enter password" />
+                <input name="password" type="text"  placeholder="enter password" onChange={(e)=>setUserData({...userData, password: e.target.value})} required />
               </label>
             </div>
             <div>

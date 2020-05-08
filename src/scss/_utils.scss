@@ -11,7 +11,7 @@
 }
 
 html {
-  overflow: visible;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -87,11 +87,21 @@ $spacesize: (1, 2, 3, 4, 5);
     background-color: #000;
     color: $white;
   }
+  &-sm {
+    padding: .5rem .3rem ;
+    background-color: #000;
+  }
   &:hover {
     transform: translateY(-4px);
-    // color: #000;
   }
   &:active {
     transform: translateY(-2px);
+  }
+}
+
+.bg {
+  &-danger {
+    background-color: rgb(221, 48, 48);
+    color: $white;
   }
 }

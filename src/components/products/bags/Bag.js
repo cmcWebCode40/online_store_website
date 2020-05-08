@@ -77,15 +77,10 @@ const Bag = () => {
         <span></span><h2>Bags Collectionz</h2>
       </div>
       <Carousel responsive={responsive}>
-        {/* <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
-        <div>Item 4</div> */}
         {data.map(item => (
           <BagList key={item.id} title={item.title} price={item.price} />
         ))}
       </Carousel>
-      {/* <BagList /> */}
     </div>
   )
 }

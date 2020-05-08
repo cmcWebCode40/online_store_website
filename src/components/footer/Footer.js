@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   return (
@@ -6,21 +8,30 @@ const Footer = () => {
       <div className="footer-grid">
         <div className="footer-subscribe my-1">
           <form>
-            <input type="text" placeholder="enter your email address" />
+            <input type="text" placeholder="enter your email address" required />
             <button type="submit">SUBSCRIBE</button>
           </form>
         </div>
         <div className="footer-nav my-1">
-          <ul> 
-            <li> <a href="wecsjkcskjdc.com">COLLECTIONS</a></li>
-            <li> <a href="wecsjkcskjdc.com">SERVICES</a></li>
-            <li> <a href="wecsjkcskjdc.com">CONTACT</a></li>
-            <li> <a href="wecsjkcskjdc.com">CART</a></li>
+          <ul>
+            <a title="collections" href="/#products">COLLECTIONS</a>
+            <a title="services" href="/#about">SERVICES</a>
+            <Link title="contact" to="/">CONTACT</Link>
+            <Link title="cart" to="/cart"><FontAwesomeIcon
+              icon="shopping-cart"
+              size="1x"
+              color="#fff"
+            /></Link>
           </ul>
         </div>
       </div>
-      <cite>LA MORE COLLECTION &copy; 2020</cite>
-      <p>built with coffee by cmcWebCode</p>
+      <small>LA MORE COLLECTION &copy; 2020</small>
+      <p>built with
+        <FontAwesomeIcon
+          icon="coffee"
+          size="1x"
+          color="#fff"
+        /> by cmcWebCode</p>
     </footer>
   )
 }

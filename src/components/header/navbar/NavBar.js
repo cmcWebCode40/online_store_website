@@ -1,20 +1,26 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import SearchBtn from '../SearchBtn';
+import ImageIcon from '../../../images/commerce-and-shopping.svg';
 
 const NavBar = () => {
   return (
-    <div className="navbar ml-2 mt-2">
+    <div className="navbar ">
       <ul>
-        <li> <a href="wecsjkcskjdc.com">COLLECTIONS</a></li>
-        {/* <li> <a href="wecsjkcskjdc.com">ABOUT</a></li> */}
-        {/* <li> <a href="wecsjkcskjdc.com">SUBSCRIBE</a></li>
-        <li> <a href="wecsjkcskjdc.com">CART</a></li> */}
-        <li> <a href="wecsjkcskjdc.com"> <FontAwesomeIcon
-          icon="shopping-cart"
-          size="2x"
-          style={{ marginRight: "1rem" }}
-          color="brown"
-        /></a></li>
+        <a href="/#products" className="large-nav">
+          COLLECTIONS
+        </a>
+        <a href="/#about" className="large-nav">
+          ABOUT
+        </a>
+        <Link to="/login" className="large-nav">
+          <li>LOGIN</li>
+        </Link>
+        <SearchBtn />
+        <Link to="/cart" className="cart-icon">
+          <li> <img src={ImageIcon} alt="cart shopping" height="30" width="30" />
+          </li>
+        </Link>
       </ul>
     </div>
   )

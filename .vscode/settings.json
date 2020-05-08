@@ -5,8 +5,9 @@
     "js": {},
   },
   "prettier.vueIndentScriptAndStyle": true,
-  "prettier.trailingComma": "all",
+  "prettier.trailingComma": "none",
   "prettier.useTabs": true,
   "prettier.singleQuote": true,
-  "prettier.printWidth": 100
+  "prettier.printWidth": 100,
+  "editor.formatOnSave": true,
 }
