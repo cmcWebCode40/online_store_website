@@ -1,23 +1,91 @@
 @import "./variables";
+@import "./mixins";
 
 @media (min-width: 1000px) {
+  .header {
+    border-bottom: 1px solid rgb(247, 247, 247);
+    box-shadow: none !important;
+    .items {
+      width: 20%;
+    }
+    .navbar {
+      margin: 1.8rem 0;
+    }
+
+    .logo {
+      img {
+        height: 5rem ;
+      }
+    }
+  }
+
   .home {
-    // display: none;
     .landing-page {
       &-content {
         h1 {
           font-size: $md-font-size;
         }
         p {
-          font-size: 1.5rem ;
+          font-size: 1.5rem;
         }
         small {
-          font-size: 1.2rem ;
+          font-size: 1.2rem;
         }
       }
       &-image {
         display: block;
       }
     }
+    .about {
+      &-card {
+        width: 60%;
+        text-align: left;
+        span {
+          @include positionItemRight(absolute, 5rem, -2.5rem);
+        }
+      }
+    }
+    .advert {
+      display: flex;
+      div:nth-child(1) {
+        flex-basis: 63.333%;
+      }
+      div:nth-child(2) {
+        flex-basis: 42.333%;
+        margin-bottom: -0.5rem;
+      }
+    }
+  }
+
+  .form {
+    &-wrapper {
+      display: flex;
+      justify-content: space-around;
+      &-image {
+        display: block !important;
+      }
+      &-field {
+        width: 400px;
+      }
+    }
+  }
+
+  .cart-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 0.4fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    .large-nav {
+      display: block !important;
+    }
+  }
+}
+@media (min-width: 800px) {
+  .cart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.4fr);
   }
 }

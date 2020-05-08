@@ -6,21 +6,125 @@
 //header section
 .header {
   display: flex;
-  border-bottom: 1px solid rgb(247, 247, 247);
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+}
+
+.logo {
+  img {
+    height: 3.5rem ;
+  }
 }
 
 .navbar {
+  margin: 1rem 1.5rem ;
   ul {
     display: flex;
-    li {
+    a {
+      color: $text-color;
       margin: 0 1rem;
-      a {
-        color: $text-color;
+    }
+  }
+  .large-nav {
+    display: none;
+  }
+  .cart-icon {
+    margin: -0.4rem 0;
+  }
+}
+
+//search section
+.btn-link {
+  outline: none;
+  background: inherit;
+  border: none;
+  cursor: pointer;
+}
+.none {
+  display: none;
+}
+
+.items {
+  width: 80%;
+  margin: auto;
+  h3 {
+    color: $white;
+  }
+  &-card {
+    @include justifyCenter;
+    background-color: $white;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
+@keyframes search {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@keyframes form {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.search {
+  background-color: rgba($primary, 0.8);
+  display: block;
+  height: 200vh;
+  width: 100vw;
+  position: absolute;
+  top: 0%;
+  left: -0%;
+  z-index: 3;
+  text-align: center;
+  animation: search 1s forwards;
+  transition: all 3s ease-out;
+
+  form {
+    margin: 7rem auto;
+    text-align: center;
+    cursor: pointer;
+    width: -100%;
+    opacity: 0;
+    animation: 3s form forwards;
+    transition: all 5s ease-out;
+
+    span {
+      font-size: $md-font-size;
+      color: $white;
+    }
+    input {
+      border-bottom: $white solid 3px;
+      border-top: none;
+      color: $white;
+      border-right: none;
+      border-left: none;
+      height: 2rem;
+      outline: none;
+      width: 80%;
+      background-color: inherit;
+      &:focus {
+        box-shadow: $box-shadow;
+      }
+      &::placeholder {
+        color: #fff;
+        text-align: center;
       }
     }
   }
-  .cart-icon {
-    margin: -.4rem 0;
+  &-result {
+    ul {
+      display: block;
+      position: absolute;
+      li {
+        display: block;
+      }
+    }
   }
 }
 
@@ -50,12 +154,12 @@
   &-card {
     position: relative;
     background: $white;
-    margin: 7rem 0.8rem;
+    margin: 5rem 0.8rem;
     h2 {
       color: $primary;
     }
     span {
-      @include positionItemRight(absolute, 5rem, -2rem);
+      @include positionItemRight(absolute, 7rem, -1rem);
     }
   }
 }
@@ -94,8 +198,12 @@
     color: $white;
   }
 }
+
+.link-cart {
+  color: $white;
+}
 .no-cart {
-  text-align: center;
+ text-align: center;
 }
 
 .bags,
@@ -110,7 +218,7 @@
       margin: 0 0.6rem;
     }
     h2 {
-      font-weight: lighter;
+
     }
   }
 }
@@ -122,7 +230,6 @@
   cursor: pointer;
   h3 {
     text-align: left;
-    font-weight: lighter;
   }
   .cart-box {
     box-shadow: $box-shadow;
@@ -153,11 +260,28 @@
       }
     }
   }
-  .total, .cart-btn {
+  .total,
+  .cart-btn {
     text-align: center;
     span {
       font-weight: bold;
     }
+  }
+}
+
+//notificatiopns styling
+.notify {
+  background-color: rgba(green, .5);
+  text-align: center;
+  color: $white;
+  border-left: 5px solid green;
+  width: 15rem;
+  height: 3rem;
+  padding: .6rem ;
+  font-weight:500;
+  &-danger {
+    background-color: rgba(red, .5);
+    border-left: 5px solid red;
   }
 }
 
@@ -169,15 +293,21 @@
       font-size: 1.8rem;
       color: $primary;
     }
-    div > span {
+  }
+  .socials {
+    a {
       margin: 1.3rem 0.8rem;
+      &:hover {
+        color: rgb(90, 90, 90);
+        transition: all 2s ease-out;
+      }
     }
   }
 }
 //Sigin UP and Sign section
 .form {
   &-wrapper {
-    margin: 1rem auto;
+    margin: 5rem auto;
     &-image {
       display: none;
     }
@@ -260,15 +390,13 @@
   &-nav {
     ul {
       @include justifyCenter;
-      li {
+      a {
         margin: 0 0.5rem;
-        a {
-          color: $white;
-          &:hover {
-            color: $primary;
-            background: $light;
-            padding: 0.4rem;
-          }
+        color: $white;
+        &:hover {
+          color: $primary;
+          background: $light;
+          padding: 0.4rem;
         }
       }
     }

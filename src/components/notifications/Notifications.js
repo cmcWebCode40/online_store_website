@@ -3,8 +3,8 @@ import React from 'react'
 
 const Notifications = ({ message, classStyle }) => {
   return (
-    <div className="notify m-1">
-      <div className={classStyle}>
+    <div className={`notify ${classStyle}   m-1`}>
+      <div>
         <p>{message}</p>
       </div>
     </div>

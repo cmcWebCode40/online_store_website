@@ -19,8 +19,25 @@ const Cart = () => {
   const [notify, setNotify] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const getCart = JSON.parse(localStorage.getItem('cart'));
-
-
+//   setImage({
+//     preview: URL.createObjectURL(e.target.files[0]),
+//     raw: e.target.files[0]
+// });
+// data.append("imagefile", image.raw, image.raw.jpg);
+  const increasePerItemQty = (id) => {
+    const data = getCart.map(cart => (
+      (cart.id === id) ? { ...cart, count: cart.count + 1, price: Number(cart.price * (cart.count)) } : cart
+    ))
+    localStorage.setItem('cart', JSON.stringify(data));
+    setNotify(!notify)
+  };
+  const decreasePerItemQty = (id) => {
+    const data = getCart.map(cart => (
+      (cart.id === id && cart.count >= 1) ? { ...cart, count: cart.count - 1 } : cart
+    ))
+    localStorage.setItem('cart', JSON.stringify(data));
+    setNotify(!notify)
+  };
   const deleteFromCart = (id) => {
     const data = getCart.filter(cart =>
       cart.id !== id ? cart : null
@@ -41,15 +58,15 @@ const Cart = () => {
       const data = getCart.reduce((a, b) => a + Number(b.price), 0)
       setTotalPrice(data);
     }
-  }, [getCart])
+  }, [getCart, notify])
 
   return (
     <div className="cart">
-      <h3 className="mx-1 ">MY CART ({getCart.length > 0 ? getCart.length : 0} ITEMS)</h3>
-      {getCart.length > 0 ? <button className='btn  bg-danger' onClick={deleteAllCart}>Delete All</button> : ''}
+      <h3 className="mx-1 ">MY CART ({getCart ? getCart.length : 0} ITEMS)</h3>
+      {getCart.length && <button onClick={deleteAllCart}>Delete All</button>}
       {notify && <Notifications message='Item removed from cart' classStyle='new' />}
       <div className="cart-grid">
-        {getCart.length > 0 && getCart.map(cart => (
+        {getCart.length && getCart.map(cart => (
           <div className="cart-box m-2 py-1 " key={cart.id}>
             <div className="cart-box-grid">
               <img src={imageCart} alt={cart.title} />
@@ -59,15 +76,28 @@ const Cart = () => {
               </div>
             </div>
             <div className="cart-box-bottom">
-              <span type="button" onClick={() => deleteFromCart(cart.id)}>
+              <span onClick={() => deleteFromCart(cart.id)}>
                 <FontAwesomeIcon
                   icon="trash"
                   size="1x"
                   style={{ marginRight: "1rem" }}
                   color="#ee6a65"
                 />
-                Remove
-              </span>
+             Remove
+            </span>
+              <span onClick={() => decreasePerItemQty(cart.id)}>  <FontAwesomeIcon
+                icon="minus-circle"
+                size="1x"
+                style={{ marginRight: "1rem" }}
+                color="#ee6a65"
+              /></span>
+              <span>{cart.count}</span>
+              <span onClick={() => increasePerItemQty(cart.id)}>  <FontAwesomeIcon
+                icon="plus-circle"
+                size="1x"
+                style={{ marginRight: "1rem" }}
+                color="#ee6a65"
+              /></span>
             </div>
           </div>
         ))}
