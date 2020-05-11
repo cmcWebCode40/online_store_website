@@ -8,19 +8,19 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 
 const Layouts = () => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Footer />
-      </div>
-    </BrowserRouter>
+	return (
+		<BrowserRouter>
+			<div className='load'></div>
+			<div>
+				<Header />
+				<Route exact path='/' component={Home} />
+				<Route exact path='/cart' component={Cart} />
+				<Route exact path='/login' component={Login} />
+				<Route exact path='/register' component={Register} />
+				<Footer />
+			</div>
+		</BrowserRouter>
+	);
+};
 
-  )
-}
-
-export default Layouts
+export default Layouts;

@@ -10,11 +10,19 @@
     }
     .navbar {
       margin: 1.8rem 0;
+      .cart-icon {
+        li {
+          span {
+            position: absolute;
+            top: 0.9rem;
+          }
+        }
+      }
     }
 
     .logo {
       img {
-        height: 5rem ;
+        height: 5rem;
       }
     }
   }

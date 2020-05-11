@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import axios from 'axios';
+import { context } from '../components/context/ContextApi';
 
-const useFetch = (url) => {
-  const [data, setData] = useState('');
-  const [error, setError] = useState('');
+const fetchCollection = async url => {
+	const res = await axios.get(url);
+	return res;
+};
 
-  const fetchData = async (url) => {
-    try {
-      const req = await fetch(url);
-      const res = req.json();
-      setData(res);
-    } catch (error) {
-      setError(error)
-    }
-  }
-  useEffect(() => {
-    fetchData(url)
-  }, [])
-  return { data, error }
-}
+const useFetch = url => {
+	const [data, setData] = React.useState('');
+	const [error, setError] = React.useState('');
+	const [isLoading, setIsLoading] = useContext(context);
+
+	useEffect(() => {
+		fetchCollection(url)
+			.then(res => {
+				setIsLoading(true);
+				setData(res);
+				setIsLoading('');
+			})
+			.catch(err => setError(err));
+	}, [url]);
+	return { data, error };
+};
 
 export default useFetch;
