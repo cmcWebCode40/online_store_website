@@ -17,7 +17,7 @@ const Login = () => {
 
 	(async () => {
 		try {
-			const data = await axios.post('https://online-shop-api.herokuapp.com/user/register', {
+			await axios.post('https://online-shop-api.herokuapp.com/user/register', {
 				body: {
 					name: 'michaelboy',
 					email: 'googleman.gmail.com',
@@ -43,7 +43,7 @@ const Login = () => {
 							<Notification classStyle='notify-danger' message='action cannot be peformed' />
 						)}
 						<div>
-							<label htmlFor='email'>
+							<label htmlFor='email-input'>
 								<FontAwesomeIcon
 									icon='user'
 									size='1x'
@@ -51,17 +51,17 @@ const Login = () => {
 									style={{ marginRight: '.5rem' }}
 								/>
 								Email
-								<input
-									name='email'
-									type='email'
-									placeholder='enter email'
-									onChange={e => setUserData({ ...userData, email: e.target.value })}
-									required
-								/>
 							</label>
+							<input
+								id='email-input'
+								type='email'
+								placeholder='enter email'
+								onChange={e => setUserData({ ...userData, email: e.target.value })}
+								required
+							/>
 						</div>
 						<div>
-							<label htmlFor='password'>
+							<label htmlFor='password-input'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -69,14 +69,14 @@ const Login = () => {
 									style={{ marginRight: '.5rem' }}
 								/>
 								Password
-								<input
-									name='password'
-									type='text'
-									placeholder='enter password'
-									onChange={e => setUserData({ ...userData, password: e.target.value })}
-									required
-								/>
 							</label>
+							<input
+								id='password-input'
+								type='text'
+								placeholder='enter password'
+								onChange={e => setUserData({ ...userData, password: e.target.value })}
+								required
+							/>
 						</div>
 						<div>
 							<button type='submit' className='btn'>
