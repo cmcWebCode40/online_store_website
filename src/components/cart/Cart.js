@@ -41,8 +41,8 @@ const Cart = () => {
 
 	return (
 		<div className='cart'>
-			<h3 className='mx-1 '>MY CART ({getCart.length > 0 ? getCart.length : 0} ITEMS)</h3>
-			{getCart.length > 0 ? (
+			<h3 className='mx-1 '>MY CART ({getCart ? getCart.length : 0} ITEMS)</h3>
+			{getCart ? (
 				<button className='btn  bg-danger' onClick={deleteAllCart}>
 					Delete All
 				</button>
@@ -51,7 +51,7 @@ const Cart = () => {
 			)}
 			{notify && <Notifications message='Item removed from cart' classStyle='new' />}
 			<div className='cart-grid'>
-				{getCart.length > 0 &&
+				{getCart &&
 					getCart.map(cart => (
 						<div className='cart-box m-2 py-1 ' key={cart.id}>
 							<div className='cart-box-grid'>
@@ -75,7 +75,7 @@ const Cart = () => {
 						</div>
 					))}
 			</div>
-			{!getCart.length && <NoCartAvailabe />}
+			{!getCart && <NoCartAvailabe />}
 			<p className='total mb-1'>
 				Total <span>{totalPrice ? totalPrice : 0} </span>
 			</p>

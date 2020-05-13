@@ -18,12 +18,12 @@ const NavBar = () => {
 				<Link to='/login' className='large-nav'>
 					<li>LOGIN</li>
 				</Link>
-				<SearchBtn />
+				<div className='search-comp'>
+					<SearchBtn />
+				</div>
 				<Link to='/cart' className='cart-icon'>
 					<li>
-						<span className={!count.toString() && 'no-count' ? '' : null}>
-							{count ? count.length : 0}
-						</span>
+						<span className={!count && 'no-count' ? '' : null}>{count ? count.length : 0}</span>
 						<img src={ImageIcon} alt='cart shopping' height='30' width='30' />
 					</li>
 				</Link>

@@ -4,27 +4,7 @@ import imageLogo from '../../images/slide3.jpg';
 
 const SearchBtn = () => {
 	const [isAdded, setAdded] = useState(false);
-	const [count] = useState(localStorage.getItem('cart'));
-	const [searchedItems] = useState([
-		{
-			id: 1,
-			title: 'new bags in town',
-			price: '200',
-			image: 'sjckjs'
-		},
-		{
-			id: 2,
-			title: 'new bags in town',
-			price: '200',
-			image: 'sjckjs'
-		},
-		{
-			id: 3,
-			title: 'new bags in town',
-			price: '200',
-			image: 'sjckjs'
-		}
-	]);
+	const [searchedItems] = useState([]);
 	const [isOpened, setIsOpened] = useState(false);
 	const openSearchBar = () => {
 		setIsOpened(true);
@@ -36,8 +16,8 @@ const SearchBtn = () => {
 					icon='search'
 					size='1x'
 					style={{ marginRight: '1rem ' }}
-					color='#333'
-					fontWeight='200'
+					color='#444'
+					fontWeight='100'
 				/>
 			</button>
 			<div className={isOpened ? 'search' : 'none'}>
@@ -47,7 +27,7 @@ const SearchBtn = () => {
 					<button className='btn-link' onClick={openSearchBar}>
 						<FontAwesomeIcon
 							icon='search'
-							size='2x'
+							size='1x'
 							style={{ marginRight: '1rem ' }}
 							color='#333'
 						/>
@@ -55,40 +35,44 @@ const SearchBtn = () => {
 				</form>
 				<div className='items'>
 					<h3>Search results ({searchedItems.length})</h3>
-					{searchedItems.map(searched => (
-						<div key={searched.id} className='items-card '>
-							<div className='items-card-image'>
-								<img src={imageLogo} alt={searched.title} height='100' />
+					{searchedItems ? (
+						searchedItems.map(searched => (
+							<div key={searched.id} className='items-card '>
+								<div className='items-card-image'>
+									<img src={imageLogo} alt={searched.title} height='100' />
+								</div>
+								<div className='items-card-list'>
+									<h5>{searched.title}</h5>
+									<p>${searched.price}</p>
+									<button onClick={() => setAdded(!isAdded)} className='btn btn-sm'>
+										{isAdded ? (
+											<p>
+												ADDED
+												<FontAwesomeIcon
+													icon='check'
+													size='1x'
+													style={{ margin: ' 0 1rem ' }}
+													color='green'
+												/>
+											</p>
+										) : (
+											<p>
+												ADD
+												<FontAwesomeIcon
+													icon='shopping-cart'
+													size='1x'
+													style={{ margin: ' 0 1rem ' }}
+													color='#fff'
+												/>
+											</p>
+										)}
+									</button>
+								</div>
 							</div>
-							<div className='items-card-list'>
-								<h5>{searched.title}</h5>
-								<p>${searched.price}</p>
-								<button onClick={() => setAdded(!isAdded)} className='btn btn-sm'>
-									{isAdded ? (
-										<p>
-											ADDED
-											<FontAwesomeIcon
-												icon='check'
-												size='1x'
-												style={{ margin: ' 0 1rem ' }}
-												color='green'
-											/>
-										</p>
-									) : (
-										<p>
-											ADD
-											<FontAwesomeIcon
-												icon='shopping-cart'
-												size='1x'
-												style={{ margin: ' 0 1rem ' }}
-												color='#fff'
-											/>
-										</p>
-									)}
-								</button>
-							</div>
-						</div>
-					))}
+						))
+					) : (
+						<p>No Items found</p>
+					)}
 				</div>
 			</div>
 		</div>

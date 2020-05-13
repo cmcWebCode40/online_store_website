@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Bags from './bags/Bag';
 import Shoes from './shoes/Shoes';
 import { context } from '../context/ContextApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Products = () => {
 	const [isLoading] = useContext(context);
@@ -10,11 +11,9 @@ const Products = () => {
 	return (
 		<div id='products'>
 			{isLoading ? (
-				<h1>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis accusamus asperiores
-					perferendis ducimus sunt sit doloribus at similique excepturi consectetur, praesentium hic
-					optio iure enim voluptas odio assumenda impedit aliquid?
-				</h1>
+				<div className='loader'>
+					<FontAwesomeIcon icon='spinner' size='2x' color='#ee6a65' spin />
+				</div>
 			) : (
 				<div>
 					<Bags />
