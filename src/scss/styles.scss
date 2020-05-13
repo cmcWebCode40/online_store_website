@@ -6,17 +6,18 @@
 //header section
 .header {
   display: flex;
-  box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 }
 
 .logo {
+  margin-top: 0rem;
   img {
-    height: 3.5rem ;
+    height: 3.3rem;
   }
 }
 
 .navbar {
-  margin: 1rem 1.5rem ;
+  margin: 1rem 1.5rem;
   ul {
     display: flex;
     a {
@@ -29,6 +30,28 @@
   }
   .cart-icon {
     margin: -0.4rem 0;
+    .no-count {
+      display: none;
+    }
+
+    li {
+      span {
+        position: absolute;
+        top: 0.3rem;
+        font-size: 0.6rem;
+        font-weight: 900no-count {
+          display: none;
+          background-color: $white;
+        }
+        display: block;
+        border-radius: 50%;
+        height: 1.1rem;
+        width: 1.1rem;
+        background-color: $danger;
+        color: $white;
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -38,6 +61,8 @@
   background: inherit;
   border: none;
   cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: lighter;
 }
 .none {
   display: none;
@@ -61,7 +86,7 @@
     opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
 @keyframes form {
@@ -203,7 +228,7 @@
   color: $white;
 }
 .no-cart {
- text-align: center;
+  text-align: center;
 }
 
 .bags,
@@ -218,7 +243,6 @@
       margin: 0 0.6rem;
     }
     h2 {
-
     }
   }
 }
@@ -271,16 +295,16 @@
 
 //notificatiopns styling
 .notify {
-  background-color: rgba(green, .5);
+  background-color: rgba(green, 0.5);
   text-align: center;
   color: $white;
   border-left: 5px solid green;
   width: 15rem;
   height: 3rem;
-  padding: .6rem ;
-  font-weight:500;
+  padding: 0.6rem;
+  font-weight: 500;
   &-danger {
-    background-color: rgba(red, .5);
+    background-color: rgba(red, 0.5);
     border-left: 5px solid red;
   }
 }

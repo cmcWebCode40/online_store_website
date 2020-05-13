@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./mixins";
 * {
   margin: 0;
   padding: 0;
@@ -88,7 +89,7 @@ $spacesize: (1, 2, 3, 4, 5);
     color: $white;
   }
   &-sm {
-    padding: .5rem .3rem ;
+    padding: 0.5rem 0.3rem;
     background-color: #000;
   }
   &:hover {
@@ -101,7 +102,16 @@ $spacesize: (1, 2, 3, 4, 5);
 
 .bg {
   &-danger {
-    background-color: rgb(221, 48, 48);
+    background-color: $danger;
     color: $white;
   }
+}
+
+.loader {
+  background: $primary;
+  @include justifyCenter;
+}
+
+.no-loader {
+  background: $white;
 }
