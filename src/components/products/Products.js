@@ -11,10 +11,11 @@ const Products = () => {
 	return (
 		<div id='products'>
 			{isLoading ? (
-				<div className='loader'>
-					<FontAwesomeIcon icon='spinner' size='2x' color='#ee6a65' spin />
-				</div>
+				''
 			) : (
+				// <div className='loader'>
+				// 	<FontAwesomeIcon icon='spinner' size='2x' color='#ee6a65' spin />
+				// </div>
 				<div>
 					<Bags />
 					<Shoes />

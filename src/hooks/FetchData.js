@@ -10,7 +10,7 @@ const fetchCollection = async url => {
 const useFetch = url => {
 	const [data, setData] = React.useState('');
 	const [error, setError] = React.useState('');
-	const [isLoading, setIsLoading] = useContext(context);
+	const [setIsLoading] = useContext(context);
 
 	useEffect(() => {
 		fetchCollection(url)
@@ -20,7 +20,7 @@ const useFetch = url => {
 				setIsLoading('');
 			})
 			.catch(err => setError(err));
-	}, [url]);
+	}, []);
 	return { data, error };
 };
 

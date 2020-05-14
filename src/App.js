@@ -16,7 +16,8 @@ import {
 	faLock,
 	faPhone,
 	faPhoneAlt,
-	faCheck
+	faCheck,
+	faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 import './scss/styles.scss';
 
@@ -34,7 +35,8 @@ library.add(
 	faLock,
 	faPhone,
 	faPhoneAlt,
-	faCheck
+	faCheck,
+	faSpinner
 );
 
 const App = () => {
