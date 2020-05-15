@@ -15,9 +15,9 @@ const useFetch = url => {
 	useEffect(() => {
 		fetchCollection(url)
 			.then(res => {
-				setIsLoading(true);
+				// setIsLoading(true);
 				setData(res);
-				setIsLoading('');
+				// setIsLoading(false);
 			})
 			.catch(err => setError(err));
 	}, []);

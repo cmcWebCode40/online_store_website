@@ -51,7 +51,7 @@ const Cart = () => {
 			)}
 			{notify && <Notifications message='Item removed from cart' classStyle='new' />}
 			<div className='cart-grid'>
-				{getCart &&
+				{getCart !== null &&
 					getCart.map(cart => (
 						<div className='cart-box m-2 py-1 ' key={cart.id}>
 							<div className='cart-box-grid'>
