@@ -35,3 +35,13 @@ workbox.routing.registerRoute(
 	'GET'
 );
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST, {});
+
+self.addEventListener('install', e => {
+	const channel = new BroadcastChannel('service-worker-cahnnel');
+	channel.postMessage({ promptToReload: true });
+	channel.onmessage = message => {
+		if (message.data.skipWaiting) {
+			self.skipWaiting();
+		}
+	};
+});

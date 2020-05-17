@@ -10,14 +10,14 @@
 }
 
 .logo {
-  margin-top: 0rem;
+  margin-bottom: -0.3rem;
   img {
     height: 3.3rem;
   }
 }
 
 .navbar {
-  margin: 1rem 1.5rem;
+  margin: 1.25rem 1.5rem -2rem 1.5rem;
   ul {
     display: flex;
     a {
@@ -126,19 +126,17 @@
       font-size: $md-font-size;
       color: $white;
     }
-    input {
-      border-bottom: $white solid 3px;
-      border-top: none;
+
+    input[type="text"] {
+      border-bottom: 3px solid $white;
       color: $white;
-      border-right: none;
-      border-left: none;
+      border-left: transparent;
+      border-right: transparent;
+      border-top: transparent;
       height: 2rem;
       outline: none;
       width: 80%;
       background-color: inherit;
-      &:focus {
-        box-shadow: $box-shadow;
-      }
       &::placeholder {
         color: #fff;
         text-align: center;

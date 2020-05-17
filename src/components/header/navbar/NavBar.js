@@ -7,7 +7,7 @@ const getCartItems = JSON.parse(localStorage.getItem('cart'));
 const NavBar = () => {
 	const [count] = useState(getCartItems);
 	return (
-		<div className='navbar '>
+		<div className='navbar'>
 			<ul>
 				<a href='/#products' className='large-nav'>
 					COLLECTIONS
