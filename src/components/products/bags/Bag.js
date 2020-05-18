@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import BagList from './BagList';
 import useFetch from '../../../hooks/FetchData';
 import { responsive } from '../MediaQuery';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Bag = () => {
 	const bagCollection = useFetch('https://online-shop-api.herokuapp.com/bags/');
 
@@ -21,7 +21,9 @@ const Bag = () => {
 					))}
 				</Carousel>
 			) : (
-				''
+				<div className='loader'>
+					<FontAwesomeIcon icon='spinner' size='2x' color='#ee6a65' spin />
+				</div>
 			)}
 		</div>
 	);

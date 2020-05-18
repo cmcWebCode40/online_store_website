@@ -108,10 +108,76 @@ $spacesize: (1, 2, 3, 4, 5);
 }
 
 .loader {
-  background: $primary;
+  background: #f8f8f8;
+  margin: 1.6rem 0 -1rem 0;
+  height: 20rem;
+  width: 100%;
   @include justifyCenter;
 }
 
-.no-loader {
-  background: $white;
+.loader-shell {
+  background: #ee6a65;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loader-wrapper {
+  position: absolute;
+  position: absolute;
+  margin: 2rem auto;
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.wheels {
+  height: 3.3rem;
+  width: 3.3rem;
+  border-radius: 50%;
+  animation: 0.1s infinite wheel;
+  transition: all 3s ease-in;
+
+  .wheels-1 {
+    position: fixed;
+    left: 7.2rem;
+    top: 14.3rem;
+  }
+
+  .wheels-2 {
+    position: fixed;
+    left: 15rem;
+    top: 14.3rem;
+  }
+
+  .wheels img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes wheel {
+  0% {
+    transform: rotate(45deg);
+    transition: all 2s ease-in-out;
+  }
+
+  25% {
+    transform: rotate(90deg);
+    transition: all 2s ease-in-out;
+  }
+
+  50% {
+    transform: rotate(180deg);
+    transition: all 2s ease-in-out;
+  }
+
+  75% {
+    transform: rotate(270deg);
+    transition: all 2s ease-in-out;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    transition: all 2s ease-in-out;
+  }
 }
