@@ -113,6 +113,12 @@
         window.location.reload();
       })
     }
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPromp = e;
+      confirm("Would you like to install?")
+    })
   </script>
 </body>
 
