@@ -6,7 +6,13 @@
 //header section
 .header {
   display: flex;
+  justify-content: space-between;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  background-color: $white;
 }
 
 .logo {
@@ -17,12 +23,23 @@
 }
 
 .navbar {
-  margin: 1.25rem 1.5rem -2rem 1.5rem;
+  margin: 1.25rem 3rem -2rem 1.5rem;
   ul {
     display: flex;
     a {
       color: $text-color;
-      margin: 0 1rem;
+      margin: 0 1.5rem;
+      &:hover {
+        color: $primary;
+        font-weight: 500;
+      }
+    }
+  }
+  .user {
+    font-size: 1.5rem;
+    margin: -0.6rem -0.7rem 0 1.3rem;
+    &:hover {
+      color: $primary;
     }
   }
   .large-nav {
@@ -66,6 +83,9 @@
   cursor: pointer;
   font-size: 1.3rem;
   font-weight: lighter;
+  &:hover {
+    color: $primary;
+  }
 }
 .none {
   display: none;
@@ -158,17 +178,52 @@
 .landing-page {
   display: flex;
   justify-content: space-between;
+  margin: 5rem 0;
   &-content {
     h1 {
       font-size: $sm-font-size;
+      animation: heading 1s forwards;
+      transition: 0.6s ease-in-out;
     }
+
+    .small-word {
+      animation: word 1s forwards;
+      transition: 1s ease-in-out;
+    }
+
     a {
       margin: 2rem 0;
     }
   }
+
   &-image {
     display: none;
-    @include positionItemRight(absolute, 0, 7rem);
+    @include positionItemRight(absolute, 3rem, 7rem);
+    z-index: 1;
+  }
+}
+@keyframes heading {
+  from {
+    transform: translateX(-100px);
+    transition: 0.5s ease-in-out;
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes word {
+  from {
+    transform: translatex(100px);
+    transition: 0.5s ease-in-out;
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
   }
 }
 
@@ -181,6 +236,7 @@
     position: relative;
     background: $white;
     margin: 5rem 0.8rem;
+    border: 4px solid $primary;
     h2 {
       color: $primary;
     }
@@ -199,6 +255,12 @@
   width: 75%;
   margin: 2rem auto;
   box-shadow: $box-shadow;
+  box-shadow: -1px 3px 15px 1px #f4f4f4, -3px 6px 18px -3px #f4f4f4;
+  &:hover {
+    transform: scale(0.9);
+    transition: all 0.4s ease-in-out;
+    box-shadow: $box-shadow2;
+  }
   &-like {
     @include positionItemRight(absolute, 0, 0);
     padding: 0.7rem 1.2rem 0 0;
@@ -207,12 +269,15 @@
     }
   }
   &-image {
-    padding: 2.7rem 0 0 0;
+    padding: 2.3rem 0 0 0;
     img {
-      height: 7rem;
-      width: 9rem;
+      height: 9rem;
+      width: 55%;
     }
     p {
+      padding: 0.3rem 1.4rem;
+      word-break: normal;
+
       &:nth-child(3) {
         color: $primary;
         font-weight: 600;
@@ -223,6 +288,10 @@
     background: $primary;
     color: $white;
   }
+}
+.naira {
+  height: 1rem !important;
+  width: 1rem !important;
 }
 
 .link-cart {
@@ -251,13 +320,18 @@
 //Cart Section
 
 .cart {
-  margin: 1rem;
+  margin: 6rem 1rem;
   cursor: pointer;
   h3 {
     text-align: left;
   }
   .cart-box {
     box-shadow: $box-shadow;
+    &:hover {
+      transform: scale(0.9);
+      transition: all 0.4s ease-in-out;
+      box-shadow: $box-shadow2;
+    }
 
     &-grid {
       display: grid;
@@ -332,17 +406,20 @@
 //Sigin UP and Sign section
 .form {
   &-wrapper {
-    margin: 5rem auto;
+    margin: 9rem auto;
     &-image {
       display: none;
     }
     &-field {
       box-shadow: $box-shadow;
       margin: 0 0.5rem;
-      // width: 80%;
+
+      a {
+        color: #000;
+      }
+
       h3 {
         text-align: center;
-        // margin-top: 1rem;
         padding: 1.4rem 0 0 0;
       }
       form {
@@ -374,6 +451,7 @@
 
 //footer section
 .footer {
+  position: relative;
   background: $primary;
   text-align: center;
   color: $white;

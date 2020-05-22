@@ -1,16 +1,12 @@
 /* eslint-disable */
-importScripts('workbox-v5.1.3/workbox-sw.js');
-
-workbox.setConfig({
-	modulePathPrefix: 'workbox-v5.1.3/'
-});
-
-workbox.precaching.suppressingWarnings();
-workbox.precaching.precacheAndRoute([]);
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
 
 const dataCacheConfig = {
 	cacheName: 'online-shop'
 };
+
+const precacheManifest = [];
+
 workbox.routing.registerRoute(
 	new RegExp('https://online-shop-api.herokuapp.com/bags/'),
 	workbox.strategies.cacheFirst(dataCacheConfig)
@@ -26,8 +22,6 @@ workbox.routing.registerRoute(
 	}),
 	'GET'
 );
-workbox.precaching.precacheAndRoute(self.__WB_MANIFEST, {});
-
 self.addEventListener('install', e => {
 	const channel = new BroadcastChannel('service-worker-cahnnel');
 	channel.postMessage({ promptToReload: true });
@@ -37,3 +31,5 @@ self.addEventListener('install', e => {
 		}
 	};
 });
+workbox.precaching.precacheAndRoute([]);
+/(\.precacheAndRoute\()\s*\[\s*\]\s*(\)|,)/;
