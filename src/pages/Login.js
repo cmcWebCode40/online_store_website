@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import Notification from '../components/notifications/Notifications';
 import loginImage from '../images/login.svg';
-import 'axios';
-import axios from 'axios';
 
 const Login = () => {
 	const [userData, setUserData] = useState({ email: '', password: '' });
@@ -15,21 +13,6 @@ const Login = () => {
 		setMessage(!message);
 	};
 
-	(async () => {
-		try {
-			await axios.post('https://online-shop-api.herokuapp.com/user/register', {
-				body: {
-					name: 'michaelboy',
-					email: 'googleman.gmail.com',
-					password: 'mike123'
-				},
-				header: {
-					'content-type': 'application/json'
-				}
-			});
-		} catch (err) {}
-	})();
-
 	return (
 		<div className='form' onSubmit={handleLogin}>
 			<div className='form-wrapper'>
@@ -37,13 +20,13 @@ const Login = () => {
 					<img src={loginImage} alt='login portal ' height='350' />
 				</div>
 				<div className='form-wrapper-field'>
-					<h3>ADMIN LOGIN</h3>
+					<h3> LOGIN</h3>
 					<form>
 						{message && (
-							<Notification classStyle='notify-danger' message='action cannot be peformed' />
+							<Notification classStyle=' notify-danger' message='action cannot be peformed' />
 						)}
 						<div>
-							<label htmlFor='email-input'>
+							<label for='emailR'>
 								<FontAwesomeIcon
 									icon='user'
 									size='1x'
@@ -53,7 +36,8 @@ const Login = () => {
 								Email
 							</label>
 							<input
-								id='email-input'
+								id='emailR'
+								name='emailR'
 								type='email'
 								placeholder='enter email'
 								onChange={e => setUserData({ ...userData, email: e.target.value })}
@@ -61,7 +45,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label htmlFor='password-input'>
+							<label for='passwordR'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -71,7 +55,8 @@ const Login = () => {
 								Password
 							</label>
 							<input
-								id='password-input'
+								id='passwordR'
+								name='passwordR'
 								type='text'
 								placeholder='enter password'
 								onChange={e => setUserData({ ...userData, password: e.target.value })}

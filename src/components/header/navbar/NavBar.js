@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBtn from '../SearchBtn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageIcon from '../../../images/commerce-and-shopping.svg';
 
 const getCartItems = JSON.parse(localStorage.getItem('cart'));
@@ -26,6 +27,9 @@ const NavBar = () => {
 						<span className={!count && 'no-count' ? '' : null}>{count ? count.length : 0}</span>
 						<img src={ImageIcon} alt='cart shopping' height='30' width='30' />
 					</li>
+				</Link>
+				<Link className='user' title='user-login' to='/login'>
+					<FontAwesomeIcon icon='user' size='1x' color='inheret' />
 				</Link>
 			</ul>
 		</div>
