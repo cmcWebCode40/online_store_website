@@ -27,10 +27,9 @@ const Cart = () => {
 			localStorage.clear();
 		}
 		localStorage.setItem('cart', JSON.stringify(data));
-		setTimeout(() => {
-			setNotify(!notify);
-		}, 3000);
+		setNotify(!notify);
 	};
+
 	const deleteAllCart = () => {
 		localStorage.clear();
 		setNotify(!notify);
@@ -50,7 +49,7 @@ const Cart = () => {
 	};
 	useEffect(() => {
 		getTotalPrice();
-	}, []);
+	}, [notify]);
 
 	return (
 		<div className='cart'>

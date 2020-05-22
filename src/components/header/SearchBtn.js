@@ -11,12 +11,12 @@ const SearchBtn = () => {
 	};
 	return (
 		<div>
-			<button className='btn-link' onClick={openSearchBar}>
+			<button className='btn-link' title='search-item' onClick={openSearchBar}>
 				<FontAwesomeIcon
 					icon='search'
 					size='1x'
 					style={{ marginRight: '1rem ' }}
-					color='#444'
+					color='inheret'
 					fontWeight='100'
 				/>
 			</button>
