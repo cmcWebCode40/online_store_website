@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Advert from '../Advert';
-<<<<<<< HEAD
-// import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-=======
->>>>>>> ft-deploy-pwa-setup
+
 import { render, cleanup } from '@testing-library/react';
 
 afterEach(cleanup);

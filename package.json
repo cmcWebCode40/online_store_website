@@ -24,12 +24,8 @@
     "build": "react-scripts build  ",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-<<<<<<< HEAD
     "server": "http-server build/ -c 0",
     "service-worker": "workbox copyLibraries build/ && workbox injectManifest workbox-config.js && http-server build/ -c 0"
-=======
-    "server": "http-server build/ -c 0"
->>>>>>> ft-deploy-pwa-setup
   },
   "eslintConfig": {
     "extends": "react-app"

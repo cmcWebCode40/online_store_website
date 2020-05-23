@@ -43,17 +43,17 @@ const Advert = () => {
 						href='https://web.facebook.com/chinweikemichael.chinonso'
 						target='_blanck'
 						title='facebook'>
-						<FontAwesomeIcon icon={faFacebook} color='#ee6a65' size='2x' />
+						<FontAwesomeIcon data-testid='icon-1' icon={faFacebook} color='#ee6a65' size='2x' />
 					</a>
 					<a href='https://twitter.com/cmcWebCode?s=07' target='_blanck' title='twiiter'>
-						<FontAwesomeIcon icon={faTwitter} color='#ee6a65' size='2x' />
+						<FontAwesomeIcon data-testid='icon-2' icon={faTwitter} color='#ee6a65' size='2x' />
 					</a>
 					<a
 						href='https://github.com/cmcWebCode40'
 						color='#ee6a65'
 						target='_blanck'
 						title='instagram'>
-						<FontAwesomeIcon color='#ee6a65' icon={faInstagram} size='2x' />
+						<FontAwesomeIcon data-testid='icon-3' color='#ee6a65' icon={faInstagram} size='2x' />
 					</a>
 				</div>
 			</div>
