@@ -4,12 +4,13 @@
 @media (min-width: 1000px) {
   .header {
     border-bottom: 1px solid rgb(247, 247, 247);
-    box-shadow: none !important;
+    height: 5rem;
+
     .items {
       width: 20%;
     }
     .navbar {
-      margin: 1.8rem 0;
+      margin: 1.8rem 30rem 0 0;
       .cart-icon {
         li {
           span {
@@ -88,6 +89,9 @@
   .navbar {
     .large-nav {
       display: block !important;
+    }
+    .user {
+      display: none;
     }
   }
 }

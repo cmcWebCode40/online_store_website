@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Notifications from '../notifications/Notifications';
 import CartImage from '../../images/commerce-and-shopping.svg';
+import nairaImg from '../../images/naira.svg';
 
 const NoCartAvailabe = () => (
 	<div className='no-cart my-2'>
@@ -17,27 +18,38 @@ const NoCartAvailabe = () => (
 const Cart = () => {
 	const [notify, setNotify] = useState(false);
 	const [totalPrice, setTotalPrice] = useState(0);
+	const [deleteIcon, setDeleteIcon] = useState(false);
 	const getCart = JSON.parse(localStorage.getItem('cart'));
 
 	const deleteFromCart = id => {
 		const data = getCart.filter(cart => (cart.id !== id ? cart : null));
+		if (getCart.length === 1) {
+			localStorage.clear();
+		}
 		localStorage.setItem('cart', JSON.stringify(data));
-		setTimeout(() => {
-			setNotify(!notify);
-		}, 3000);
-	};
-	const deleteAllCart = () => {
-		localStorage.setItem('cart', JSON.stringify([]));
 		setNotify(!notify);
 	};
 
-	useEffect(() => {
+	const deleteAllCart = () => {
+		localStorage.clear();
+		setNotify(!notify);
+	};
+
+	const getTotalPrice = () => {
 		const getTotal = localStorage.getItem('cart');
+		const priceList = [];
 		if (getTotal) {
-			const data = getCart.reduce((a, b) => a + Number(b.price), 0);
-			setTotalPrice(data);
+			getCart.forEach(price => {
+				const convertToNumber = parseInt(price.price.replace(/[,]/g, ''));
+				priceList.push(convertToNumber);
+			});
+			const priceTotal = priceList.reduce((a, b) => a + b);
+			setTotalPrice(priceTotal);
 		}
-	}, [getCart]);
+	};
+	useEffect(() => {
+		getTotalPrice();
+	}, [notify]);
 
 	return (
 		<div className='cart'>
@@ -58,13 +70,22 @@ const Cart = () => {
 								<img src={cart.image} alt={cart.title} />
 								<div className='cart-box-grid-text'>
 									<p>{cart.title}</p>
-									<span>{cart.price}</span>
+									<span>
+										{' '}
+										<img className='naira' src={nairaImg} alt={cart.title} />
+										{cart.price}
+									</span>
 								</div>
 							</div>
 							<div className='cart-box-bottom'>
-								<span type='button' onClick={() => deleteFromCart(cart.id)}>
+								<span
+									type='button'
+									onClick={() => {
+										deleteFromCart(cart.id);
+										setDeleteIcon(!deleteIcon);
+									}}>
 									<FontAwesomeIcon
-										icon='trash'
+										icon={'trash'}
 										size='1x'
 										style={{ marginRight: '1rem' }}
 										color='#ee6a65'
@@ -81,7 +102,7 @@ const Cart = () => {
 			</p>
 			<br />
 			<div className='mb-3 cart-btn'>
-				<a href='www.call.com' className='btn'>
+				<a href='tel:081-6508-4064' className='btn'>
 					<FontAwesomeIcon
 						icon='phone-alt'
 						size='1x'

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import nairaImg from '../../../images/naira.svg';
 import { context } from '../../context/ContextApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -10,7 +11,10 @@ const ShoesList = ({ title, price, image }) => {
 	const handleLikeBtn = () => {
 		setIsLiked(!isLiked);
 	};
-
+	const callbackCartFn = () => {
+		addToCart(title, image, price);
+		setIsAdded(!isAdded);
+	};
 	return (
 		<div>
 			<div className='product'>
@@ -26,8 +30,11 @@ const ShoesList = ({ title, price, image }) => {
 				</div>
 				<div className='product-image '>
 					<img src={image} alt={title} />
-					<p>{title}</p>
-					<p>${price}</p>
+					<p>{title.split(' ').slice(0, 9).join(' ')}</p>
+					<p>
+						<img className='naira' src={nairaImg} alt={title} />
+						{price}
+					</p>
 				</div>
 				<div className='product-cart p-1'>
 					{isAdded ? (
@@ -43,11 +50,7 @@ const ShoesList = ({ title, price, image }) => {
 							</Link>
 						</p>
 					) : (
-						<p
-							onClick={() => {
-								addToCart(title, image, price);
-								setIsAdded(!isAdded);
-							}}>
+						<p onClick={callbackCartFn}>
 							<FontAwesomeIcon
 								icon='shopping-cart'
 								size='1x'

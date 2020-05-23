@@ -5,14 +5,14 @@ import Products from '../components/products/Products';
 import Advert from '../components/advert/Advert';
 
 const Home = () => {
-  return (
-    <div className="home">
-      <LandingPage />
-      <Products />
-      <About />
-      <Advert />
-    </div>
-  )
-}
+	return (
+		<div className='home'>
+			<LandingPage />
+			<Products />
+			<About />
+			<Advert />
+		</div>
+	);
+};
 
-export default Home
+export default Home;

@@ -19,13 +19,13 @@ const Login = () => {
 					<img src={loginImage} alt='login portal ' height='350' />
 				</div>
 				<div className='form-wrapper-field'>
-					<h3>ADMIN SIGNUP</h3>
+					<h3> SIGNUP</h3>
 					<form onSubmit={handleRegistration}>
 						{message && (
-							<Notification classStyle='notify-danger' message='action cannot be peformed' />
+							<Notification classStyle=' notify-danger' message='action cannot be peformed' />
 						)}
 						<div>
-							<label htmlFor='email-input'>
+							<label for='emailS'>
 								<FontAwesomeIcon
 									icon='user'
 									size='1x'
@@ -35,7 +35,8 @@ const Login = () => {
 								Email
 							</label>
 							<input
-								id='email-input'
+								id='emailS'
+								name='emailS'
 								type='email'
 								required
 								placeholder='enter email'
@@ -43,7 +44,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label htmlFor='password-input'>
+							<label for='passworD'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -53,7 +54,8 @@ const Login = () => {
 								Password
 							</label>
 							<input
-								id='password-input'
+								id='passworD'
+								name='passworD'
 								type='text'
 								required
 								placeholder='password'
@@ -61,7 +63,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label htmlFor='confirmpassword'>
+							<label for='confirmpassword'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -72,6 +74,7 @@ const Login = () => {
 							</label>
 							<input
 								id='confirmpassword'
+								name='confirmpassword'
 								type='text'
 								required
 								placeholder='confirm password'
