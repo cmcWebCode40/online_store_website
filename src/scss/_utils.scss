@@ -83,6 +83,7 @@ $spacesize: (1, 2, 3, 4, 5);
   box-shadow: $box-shadow;
   outline: none;
   border: none;
+  border-radius: $border-radius;
   cursor: pointer;
   &-light {
     background-color: #000;
