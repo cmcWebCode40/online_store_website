@@ -25,7 +25,7 @@ const Login = () => {
 							<Notification classStyle=' notify-danger' message='action cannot be peformed' />
 						)}
 						<div>
-							<label for='emailS'>
+							<label htmlFor='emailS'>
 								<FontAwesomeIcon
 									icon='user'
 									size='1x'
@@ -44,7 +44,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label for='passworD'>
+							<label htmlFor='passworD'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -63,7 +63,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label for='confirmpassword'>
+							<label htmlFor='confirmpassword'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'

@@ -9,6 +9,7 @@ const ContextApi = ({ children }) => {
 	const addToCart = (title, image, price) => {
 		setCartState(!cartState);
 		if (cart === null) {
+			setCart([]);
 			setCart([{ id: Math.random(0, 100), title, image, price, count: 1 }]);
 			localStorage.setItem('cart', JSON.stringify(cart));
 		} else {
@@ -17,7 +18,7 @@ const ContextApi = ({ children }) => {
 		}
 	};
 
-	useEffect(() => {}, [cart]);
+	useEffect(() => { }, [cart]);
 
 	return (
 		<div>

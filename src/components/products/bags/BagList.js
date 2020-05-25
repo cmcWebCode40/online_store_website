@@ -45,16 +45,16 @@ const BagList = ({ title, price, image }) => {
 						</Link>
 					</p>
 				) : (
-					<p onClick={callbackCartFn}>
-						<FontAwesomeIcon
-							icon='shopping-cart'
-							size='1x'
-							style={{ marginRight: '1rem' }}
-							color='#fff'
-						/>
+						<p onClick={callbackCartFn}>
+							<FontAwesomeIcon
+								icon='shopping-cart'
+								size='1x'
+								style={{ marginRight: '1rem' }}
+								color='#fff'
+							/>
 						Add to cart
-					</p>
-				)}
+						</p>
+					)}
 			</div>
 		</div>
 	);

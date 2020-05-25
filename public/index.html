@@ -6,8 +6,8 @@
   <link rel="icon" href="%PUBLIC_URL%/images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ff6964" />
-  <meta name="description" content="Buy trending shoes and bags on our platform" />
-  <meta name="keywords" content="buy new arrivals shoes bags collections shopping" />
+  <meta name="description" content="lamorecollection Buy trending shoes and bags on our platform" />
+  <meta name="keywords" content="buy new arrivals shoes bags collectionz shopping" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>LA MORE</title>
@@ -98,24 +98,19 @@
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
-      console.log('registered!!');
-
-      //   .then(() => {
-      //     const channel = new BroadcastChannel('service-worker-channel')
-      //     channel.onmessage = (message) => {
-      //       if (message.data.promotToReload) {
-      //         if (confirm('Update availble, Would you like to update')) {
-      //           channel.postMessage({ skipWaiting: true })
-      //         }
-      //       }
-      //     }
-      //   })
-      // navigator.serviceWorker.addEventListener('change', () => {
-      //   window.location.reload();
-      // })
-    } else {
-      console.log('failed');
-
+        .then(() => {
+          const channel = new BroadcastChannel('service-worker-channel')
+          channel.onmessage = (message) => {
+            if (message.data.promotToReload) {
+              if (confirm('Update availble, Would you like to update')) {
+                channel.postMessage({ skipWaiting: true })
+              }
+            }
+          }
+        })
+      navigator.serviceWorker.addEventListener('change', () => {
+        window.location.reload();
+      })
     }
   </script>
 </body>
