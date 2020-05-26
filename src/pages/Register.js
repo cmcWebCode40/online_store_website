@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { Auth } from '../hooks/Auth';
 import Notification from '../components/notifications/Notifications';
 import loginImage from '../images/login.svg';
 
-const Login = () => {
-	const [userData, setUserData] = useState({ email: '', password: '', confirmPassword: '' });
+const Register = ({ history }) => {
+	const [userData, setUserData] = useState({ name: '', email: '', password: '' });
 	const [message, setMessage] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [changeRoute, setChangeRoute] = useState(false);
 
-	const handleRegistration = async e => {
+	const handleRegistration = e => {
 		e.preventDefault();
-		setMessage(!message);
+		setLoading(true);
+		Auth.register('http://localhost:4000/user/register/', userData)
+			.then(res => {
+				if (res.status === 200) {
+					setMessage(res.statusText);
+					setChangeRoute(!changeRoute)
+				}
+			}).catch(err => {
+				const { response } = err;
+				setMessage(response.data);
+			}).finally(() => setLoading(false));
 	};
+
+	useEffect(() => {
+
+		if (changeRoute) {
+			history.push("/login")
+		}
+
+	}, [message, history, changeRoute]);
+
 	return (
 		<div className='form'>
 			<div className='form-wrapper'>
@@ -22,8 +44,27 @@ const Login = () => {
 					<h3> SIGNUP</h3>
 					<form onSubmit={handleRegistration}>
 						{message && (
-							<Notification classStyle=' notify-danger' message='action cannot be peformed' />
+							<Notification classStyle='notify-danger' message={message} />
 						)}
+						<div>
+							<label htmlFor='name'>
+								<FontAwesomeIcon
+									icon='lock'
+									size='1x'
+									color='#555'
+									style={{ marginRight: '.5rem' }}
+								/>
+								Name
+							</label>
+							<input
+								id='name'
+								name='name'
+								type='text'
+								required
+								placeholder='your name'
+								onChange={e => setUserData({ ...userData, name: e.target.value })}
+							/>
+						</div>
 						<div>
 							<label htmlFor='emailS'>
 								<FontAwesomeIcon
@@ -62,28 +103,10 @@ const Login = () => {
 								onChange={e => setUserData({ ...userData, password: e.target.value })}
 							/>
 						</div>
+
 						<div>
-							<label htmlFor='confirmpassword'>
-								<FontAwesomeIcon
-									icon='lock'
-									size='1x'
-									color='#555'
-									style={{ marginRight: '.5rem' }}
-								/>
-								Password
-							</label>
-							<input
-								id='confirmpassword'
-								name='confirmpassword'
-								type='text'
-								required
-								placeholder='confirm password'
-								onChange={e => setUserData({ ...userData, confirmPassword: e.target.value })}
-							/>
-						</div>
-						<div>
-							<button type='submit' className='btn'>
-								SIGN UP
+							<button type='submit' className={loading ? 'btn btn-disabled' : ' btn'} >
+								{loading ? <FontAwesomeIcon icon="spinner" size="1x" color="#fff" /> : 'SIGN UP'}
 							</button>
 						</div>
 						<div>
@@ -98,4 +121,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Register;
