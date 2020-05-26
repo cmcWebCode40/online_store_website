@@ -79,7 +79,7 @@ $spacesize: (1, 2, 3, 4, 5);
 .btn {
   color: $white;
   background-color: $primary;
-  padding: 1rem 3rem;
+  padding: 0.8rem 3rem;
   box-shadow: $box-shadow;
   outline: none;
   border: none;
@@ -88,6 +88,9 @@ $spacesize: (1, 2, 3, 4, 5);
   &-light {
     background-color: #000;
     color: $white;
+  }
+  &-disabled {
+    padding: 0.8rem 4rem;
   }
   &-sm {
     padding: 0.5rem 0.3rem;
@@ -106,6 +109,22 @@ $spacesize: (1, 2, 3, 4, 5);
     background-color: $danger;
     color: $white;
   }
+}
+
+//notificatiopns styling
+.notify {
+  background-color: rgba(green, 0.5);
+  text-align: center;
+  color: $white;
+  border-left: 5px solid green;
+  width: 15rem;
+  height: 3rem;
+  padding: 0.6rem;
+  font-weight: 500;
+}
+.notify-danger {
+  background-color: rgba(red, 0.5);
+  border-left: 5px solid red;
 }
 
 .scroll {
