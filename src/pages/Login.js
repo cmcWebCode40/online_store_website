@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { Auth } from '../hooks/Auth';
+import { context } from '../components/context/ContextApi';
 import Notification from '../components/notifications/Notifications';
 import loginImage from '../images/login.svg';
 
@@ -10,20 +11,21 @@ const Login = ({ history }) => {
 	const [message, setMessage] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [changeRoute, setChangeRoute] = useState(false);
+	const [, , , , setIsAdmin] = useContext(context)
 
 	const handleLogin = async e => {
-		e.preventDefault();
 		e.preventDefault();
 		setLoading(true);
 		Auth.login('http://localhost:4000/user/login/', userData)
 			.then(res => {
 				if (res.status === 200) {
 					setMessage(res.statusText);
+					setIsAdmin(true)
 					setChangeRoute(!changeRoute)
 				}
 			}).catch(err => {
-				const { response } = err;
-				setMessage(response.data);
+				const { message } = err;
+				setMessage(message);
 			}).finally(() => setLoading(false));
 	};
 
