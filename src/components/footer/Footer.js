@@ -19,18 +19,30 @@ const Footer = () => {
 				</div>
 				<div className='footer-nav my-1'>
 					<ul>
-						<a title='collections' href='/#products'>
-							COLLECTIONS
-						</a>
-						<a title='services' href='/#about'>
-							SERVICES
-						</a>
-						<Link title='contact' to='/'>
-							CONTACT
-						</Link>
-						<Link title='cart' to='/cart'>
-							<FontAwesomeIcon icon='shopping-cart' size='1x' color='#fff' />
-						</Link>
+						<li>
+							{' '}
+							<a title='collections' href='/#products'>
+								COLLECTIONS
+							</a>
+						</li>
+						<li>
+							{' '}
+							<a title='services' href='/#about'>
+								SERVICES
+							</a>
+						</li>
+						<li>
+							{' '}
+							<Link title='contact' to='/'>
+								CONTACT
+							</Link>
+						</li>
+						<li>
+							{' '}
+							<Link title='cart' to='/cart'>
+								<FontAwesomeIcon icon='shopping-cart' size='1x' color='#fff' />
+							</Link>
+						</li>
 					</ul>
 				</div>
 			</div>

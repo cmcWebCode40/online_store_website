@@ -12,10 +12,11 @@
     .navbar {
       margin: 1.8rem 30rem 0 0;
       .cart-icon {
-        li {
+        margin: -0.2rem 0;
+        a {
           span {
             position: absolute;
-            top: 0.9rem;
+            top: 1.2rem;
           }
         }
       }

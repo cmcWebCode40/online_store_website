@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { context } from '../context/ContextApi';
 import Notifications from '../notifications/Notifications';
 import CartImage from '../../images/commerce-and-shopping.svg';
 import nairaImg from '../../images/naira.svg';
@@ -15,52 +16,58 @@ const NoCartAvailabe = () => (
 		</Link>
 	</div>
 );
+
 const Cart = () => {
 	const [notify, setNotify] = useState(false);
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [deleteIcon, setDeleteIcon] = useState(false);
+	const [, cartState, setCartState] = useContext(context);
 	const getCart = JSON.parse(localStorage.getItem('cart'));
 
 	const deleteFromCart = id => {
-		const data = getCart.filter(cart => (cart.id !== id ? cart : null));
+		setCartState(!cartState);
+		setNotify(!notify);
 		if (getCart.length === 1) {
 			localStorage.clear();
+			setTotalPrice(0);
+		} else {
+			const data = getCart.filter(cart => (cart.id !== id ? cart : null));
+			localStorage.setItem('cart', JSON.stringify(data));
 		}
-		localStorage.setItem('cart', JSON.stringify(data));
-		setNotify(!notify);
 	};
 
 	const deleteAllCart = () => {
 		localStorage.clear();
 		setNotify(!notify);
+		setCartState(!cartState);
 	};
 
-	const getTotalPrice = () => {
-		const getTotal = localStorage.getItem('cart');
-		const priceList = [];
-		if (getTotal) {
-			getCart.forEach(price => {
-				const convertToNumber = parseInt(price.price.replace(/[,]/g, ''));
-				priceList.push(convertToNumber);
-			});
-			const priceTotal = priceList.reduce((a, b) => a + b);
-			setTotalPrice(priceTotal);
-		}
-	};
 	useEffect(() => {
+		const getTotalPrice = () => {
+			const getTotal = localStorage.getItem('cart');
+			const priceList = [];
+			if (getTotal) {
+				getCart.forEach(price => {
+					const convertToNumber = parseInt(price.price.replace(/[,]/g, ''));
+					priceList.push(convertToNumber);
+				});
+				const priceTotal = priceList.reduce((a, b) => a + b);
+				setTotalPrice(priceTotal);
+			}
+		};
 		getTotalPrice();
-	}, [notify]);
+	}, [notify, getCart]);
 
 	return (
 		<div className='cart'>
 			<h3 className='mx-1 '>MY CART ({getCart ? getCart.length : 0} ITEMS)</h3>
 			{getCart ? (
-				<button className='btn  bg-danger' onClick={deleteAllCart}>
+				<button className='btn  bg-danger my-2' onClick={deleteAllCart}>
 					Delete All
 				</button>
 			) : (
-				''
-			)}
+					''
+				)}
 			{notify && <Notifications message='Item removed from cart' classStyle='new' />}
 			<div className='cart-grid'>
 				{getCart !== null &&
