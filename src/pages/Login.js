@@ -1,17 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { Auth } from '../hooks/Auth';
+import { context } from '../components/context/ContextApi';
 import Notification from '../components/notifications/Notifications';
 import loginImage from '../images/login.svg';
 
-const Login = () => {
+const Login = ({ history }) => {
 	const [userData, setUserData] = useState({ email: '', password: '' });
 	const [message, setMessage] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [changeRoute, setChangeRoute] = useState(false);
+	const [, , , , setIsAdmin] = useContext(context)
 
 	const handleLogin = async e => {
 		e.preventDefault();
-		setMessage(!message);
+		setLoading(true);
+		Auth.login('http://localhost:4000/user/login/', userData)
+			.then(res => {
+				if (res.status === 200) {
+					setMessage(res.statusText);
+					setIsAdmin(true)
+					setChangeRoute(!changeRoute)
+				}
+			}).catch(err => {
+				const { message } = err;
+				setMessage(message);
+			}).finally(() => setLoading(false));
 	};
+
+	useEffect(() => {
+		if (changeRoute) {
+			history.push("/cart")
+		}
+
+	}, [message, history, changeRoute]);
 
 	return (
 		<div className='form' onSubmit={handleLogin}>
@@ -23,10 +46,10 @@ const Login = () => {
 					<h3> LOGIN</h3>
 					<form>
 						{message && (
-							<Notification classStyle=' notify-danger' message='action cannot be peformed' />
+							<Notification classStyle=' notify-danger' message={message} />
 						)}
 						<div>
-							<label for='emailR'>
+							<label htmlFor='emailR'>
 								<FontAwesomeIcon
 									icon='user'
 									size='1x'
@@ -45,7 +68,7 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<label for='passwordR'>
+							<label htmlFor='passwordR'>
 								<FontAwesomeIcon
 									icon='lock'
 									size='1x'
@@ -64,8 +87,8 @@ const Login = () => {
 							/>
 						</div>
 						<div>
-							<button type='submit' className='btn'>
-								LOGIN
+							<button type='submit' className={loading ? 'btn btn-disabled' : ' btn'} >
+								{loading ? <FontAwesomeIcon icon="spinner" size="1x" color="#fff" /> : 'LOGIN'}
 							</button>
 						</div>
 						<div>

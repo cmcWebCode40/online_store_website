@@ -15,8 +15,8 @@ const LandingPage = () => {
 					</small>
 				</div>
 				<div className='mt-2 shop-btn'>
-					<a title='shop now' className='btn' href='#collection'>
-						SHOP NOW
+					<a title='shop now' href='#collection'>
+						<button className='btn'> START SHOPPING NOW</button>
 					</a>
 				</div>
 			</div>

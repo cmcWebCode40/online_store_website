@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="about"
+    id="about"
+  >
+    <div
+      class="about-card  px-1 py-3 "
+    >
+      <h2
+        class="px-2  mb-1"
+        data-testid="heading"
+      >
+        What we are all about
+      </h2>
+      <p
+        class="px-2 "
+      >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis, rerum neque illo sed assumenda fugit maxime,onseneque illo sed assumenda fugit maxime,onseneque illo sed assumenda fugit maxime,onsectetur adipisicing elit. Saepe omnis, rerum neque illo sed assumenda.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

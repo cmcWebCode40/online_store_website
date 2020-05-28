@@ -23,13 +23,14 @@ workbox.routing.registerRoute(
 	'GET'
 );
 self.addEventListener('install', e => {
-	const channel = new BroadcastChannel('service-worker-cahnnel');
-	channel.postMessage({ promptToReload: true });
-	channel.onmessage = message => {
-		if (message.data.skipWaiting) {
-			self.skipWaiting();
-		}
-	};
+	self.skipWaiting();
+	// const channel = new BroadcastChannel('service-worker-cahnnel');
+	// channel.postMessage({ promptToReload: true });
+	// channel.onmessage = message => {
+	// 	if (message.data.skipWaiting) {
+	// 		self.skipWaiting();
+	// 	}
+	// };
 });
 workbox.precaching.precacheAndRoute([]);
 /(\.precacheAndRoute\()\s*\[\s*\]\s*(\)|,)/;
