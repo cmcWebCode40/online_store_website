@@ -257,7 +257,6 @@
   border-radius: $border-radius;
   margin: 2rem auto;
   box-shadow: $box-shadow;
-  box-shadow: -1px 3px 15px 1px #f4f4f4, -3px 6px 18px -3px #f4f4f4;
   &:hover {
     transform: scale(0.9);
     transition: all 0.4s ease-in-out;
@@ -316,8 +315,6 @@
       display: block;
       margin: 0 0.6rem;
     }
-    h2 {
-    }
   }
 }
 
@@ -374,22 +371,6 @@
   }
 }
 
-//notificatiopns styling
-.notify {
-  background-color: rgba(green, 0.5);
-  text-align: center;
-  color: $white;
-  border-left: 5px solid green;
-  width: 15rem;
-  height: 3rem;
-  padding: 0.6rem;
-  font-weight: 500;
-  &-danger {
-    background-color: rgba(red, 0.5);
-    border-left: 5px solid red;
-  }
-}
-
 //advert section
 .advert {
   text-align: center;
@@ -441,7 +422,8 @@
           padding: 0.5rem 0;
         }
 
-        input {
+        input,
+        textarea {
           border: 1px $primary solid;
           outline: none;
           padding: 0.2rem 0.4rem;
@@ -454,9 +436,74 @@
             box-shadow: $box-shadow;
           }
         }
+        textarea {
+          height: 10rem;
+        }
       }
     }
   }
+}
+
+.activity {
+  box-shadow: $box-shadow;
+  background: $white;
+  h5 {
+    font-size: 1.3rem;
+    padding: 0.5em 0.7rem;
+  }
+  &-show {
+    border-top: 2px solid $light;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    div {
+      margin: 1rem;
+      padding: 0.3rem;
+    }
+  }
+}
+.overview {
+  // @extend .activity;
+  margin: 2rem 0.5rem;
+  box-shadow: $box-shadow;
+  h5 {
+    font-size: 1.3rem;
+    padding: 0.5em 0.7rem;
+  }
+
+  &-layout {
+    border-top: 2px solid $light;
+    padding: 0.5rem 0.7rem;
+  }
+
+  &-comments {
+    padding: 0.5rem 0.7rem;
+    margin: 0.3rem 0;
+    .nav {
+      ul {
+        border: 2px solid $light;
+        display: flex;
+        padding: 0.5rem 0;
+        margin: 1rem 0;
+        li {
+          margin: 0 0.4rem;
+          border-right: 1px solid $light;
+          padding: 0 0.3rem;
+        }
+      }
+    }
+  }
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background: $light;
+  // div:nth-child(2) {
+  //   margin: 3rem 0 0 0;
+  // }
+  // background: black;
+  // height: 50vh;
 }
 
 //footer section
@@ -468,7 +515,6 @@
   &-subscribe {
     form {
       height: 2.5rem;
-
       button {
         height: 100%;
         padding: 0.5rem;

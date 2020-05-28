@@ -8,6 +8,7 @@ import ImageIcon from '../../../images/commerce-and-shopping.svg';
 const NavBar = () => {
 	const [count, setCount] = useState([]);
 	const [, cartState] = useContext(context);
+
 	useEffect(() => {
 		const getCartItems = JSON.parse(localStorage.getItem('cart'));
 		const getItemsLength = () => {
@@ -15,6 +16,7 @@ const NavBar = () => {
 		};
 		getItemsLength();
 	}, [cartState]);
+
 	return (
 		<div className='navbar'>
 			<ul>

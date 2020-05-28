@@ -39,6 +39,7 @@ const Cart = () => {
 	const deleteAllCart = () => {
 		localStorage.clear();
 		setNotify(!notify);
+		setCartState(!cartState);
 	};
 
 	useEffect(() => {
@@ -65,8 +66,8 @@ const Cart = () => {
 					Delete All
 				</button>
 			) : (
-				''
-			)}
+					''
+				)}
 			{notify && <Notifications message='Item removed from cart' classStyle='new' />}
 			<div className='cart-grid'>
 				{getCart !== null &&

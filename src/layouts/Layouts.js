@@ -8,6 +8,8 @@ const Cart = lazy(() => import('../components/cart/Cart'));
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 const Dashboard = lazy(() => import('../components/admin/Dashboard'));
+const AdminLogin = lazy(() => import('../pages/AdminLogin'));
+const AdminRegister = lazy(() => import('../pages/AdminRegister'));
 
 
 const Layouts = () => {
@@ -20,6 +22,8 @@ const Layouts = () => {
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/register' component={Register} />
 				<Route exact path='/dashboard' component={Dashboard} />
+				<Route exact path='/admin/_auth/login' component={AdminLogin} />
+				<Route exact path='/admin/_auth/register' component={AdminRegister} />
 			</Suspense>
 			<Footer />
 		</BrowserRouter>
